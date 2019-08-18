@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_xs">4dp</dimen>
+    <dimen name="padding_sm">8dp</dimen>
+    <dimen name="padding_md">12dp</dimen>
+    <dimen name="padding_lg">24dp</dimen>
+    <dimen name="padding_xl">32dp</dimen>
+    <dimen name="padding_layout_md">16dp</dimen>
+    <dimen name="padding_layout_xl">32dp</dimen>
+    <dimen name="textsize_md">16sp</dimen>
+    <dimen name="textsize_lg">24sp</dimen>
+    <dimen name="textsize_xl">32sp</dimen>
+</resources>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/layout_signin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_layout_xl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".SignInActivity">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/ic_headphones" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/title"
+            android:text="@string/txt_title_login" />
+
+        <EditText
+            android:id="@+id/et_login"
+            style="@style/edittext"
+            android:hint="@string/txt_login"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/et_pass"
+            style="@style/edittext"
+            android:ems="10"
+            android:hint="@string/txt_password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btn_signin"
+            style="@style/button_default"
+            android:layout_marginBottom="@dimen/padding_xl"
+            android:text="@string/txt_sign_in" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_don_t_have_account"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/txt_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_sign_up"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_signup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_layout_xl"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/ic_headphones" />
+
+        <TextView
+            android:id="@id/textView"
+            style="@style/title"
+            android:text="@string/txt_title_signup" />
+
+        <EditText
+            android:id="@+id/et_login_up"
+            style="@style/edittext"
+            android:hint="@string/txt_login"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/et_pass_up"
+            style="@style/edittext"
+            android:ems="10"
+            android:hint="@string/txt_password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btn_signup"
+            style="@style/button_default"
+            android:layout_marginBottom="@dimen/padding_xl"
+            android:text="@string/txt_sign_up" />
+
+        <TextView
+            android:id="@id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_have_account"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/txt_signin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_sign_in"
+            android:textAlignment="center"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,67 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@android:color/white</item>
+         <item name="actionBarTheme">@style/MyToolBarStyle</item>
+     </style>
+    <style name="AppTheme.Dark" parent="AppTheme">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+     <style name="MyToolBarStyle" >
+         <item name="android:background">@android:color/white</item>
+     </style>
+     <style name="MyTitleTextAppearance">
+         <item name="android:textSize">16sp</item>
+         <item name="android:textStyle">bold</item>
+         <item name="android:textAllCaps">true</item>
+         <item name="android:textColor">?attr/colorPrimary</item>
+     </style>
+
+    <style name="title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/textsize_xl</item>
+        <item name="android:layout_marginBottom">@dimen/padding_xl</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="textheading" parent="title">
+        <item name="android:textSize">@dimen/textsize_lg</item>
+        <item name="android:layout_marginBottom">@dimen/padding_lg</item>
+    </style>
+    <style name="textheading2" parent="title">
+        <item name="android:textSize">@dimen/textsize_md</item>
+        <item name="android:layout_marginBottom">@dimen/padding_xs</item>
+    </style>
+
+    <style name="edittext">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/padding_sm</item>
+        <item name="android:background">@drawable/rect_light_grey</item>
+
+    </style>
+
+    <style name="button_default">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/rect_btn</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+        <item name="android:layout_marginTop">@dimen/padding_md</item>
+        <item name="android:layout_marginBottom">@dimen/padding_md</item>
+    </style>
+</resources>

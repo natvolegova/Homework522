@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Homework522</string>
+    <string name="name_settings">Настройки</string>
+    <string name="name_main">Песни народов мира</string>
+    <string name="txt_title_login">Авторизация\nдля продолжения</string>
+    <string name="txt_title_signup">Создайте\nновый аккаунт</string>
+    <string name="txt_login">Логин</string>
+    <string name="txt_password">Пароль</string>
+    <string name="txt_sign_in">Войти</string>
+    <string name="txt_don_t_have_account">Нет аккаунта?</string>
+    <string name="txt_have_account">Уже зарегистрированы?</string>
+    <string name="txt_sign_up">Зарегистрироваться</string>
+    <string name="msg_error_signin">Неверный логин или пароль. Попробуйте еще раз</string>
+    <string name="msg_error_signup">Неверно введено значение. Попробуйте еще раз</string>
+    <string name="name">Англичанин в Нью-Йорке</string>
+    <string name="author">Sting</string>
+    <string name="main_text">Я не пью кофе, я пью чай, дорогая.\n
+        Я люблю тосты, поджаренные с одной стороны.\n
+        Вслушайся в мой акцент, когда я говорю,\n
+        Я англичанин в Нью-Йорке.\n\n
+        Смотри, я иду по Пятой Авеню\n
+        Гуляю с тростью в руке.\n
+        Я всегда её с собой беру, где бы я ни гулял,\n
+        Я англичанин в Нью-Йорке.\n\n
+        Я иностранец, я настоящий иностранец.\n
+        Я англичанин в Нью-Йорке.\n
+        Я иностранец, я настоящий иностранец.\n
+        Я англичанин в Нью-Йорке.\n\n
+        Как кто-то сказал: «Манеры делают человека»,\n
+        Что ж, этот кто-то — герой дня.\n
+        Нужно терпеть невежество и улыбаться,\n
+        Быть собой, неважно, что они скажут.
+    </string>
+    <string name="btn_changename">Изменить настройки языка</string>
+    <string name="set_txt_language">Язык</string>
+    <string name="set_txt_login_settings">Хранение данных</string>
+    <string name="set_data_external">Хранить во внешнем хранилище</string>
+    <string-array name="lang">
+        <item>Английский</item>
+        <item>Русский</item>
+    </string-array>
+    <string name="cancel">Отменить</string>
+    <string name="change">Применить</string>
+</resources>

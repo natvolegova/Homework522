@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:titleTextAppearance="@style/MyTitleTextAppearance" />
+
+    <LinearLayout
+        android:id="@+id/main_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_layout_md"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/textheading2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/set_txt_language" />
+
+        <TextView
+            android:id="@+id/txt_lang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="@string/set_txt_language" />
+
+        <View style="@style/divider" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/textheading2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/set_txt_login_settings" />
+
+        <Switch
+            android:id="@+id/sw_storage_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/set_data_external" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Homework522</string>
+    <string name="name_settings">Settings</string>
+    <string name="name_main">Songs</string>
+    <string name="txt_title_login">Login\nto Continue</string>
+    <string name="txt_title_signup">Create\nnew Accaunt</string>
+    <string name="txt_login">Login</string>
+    <string name="txt_password">Password</string>
+    <string name="txt_sign_in">Sign in</string>
+    <string name="txt_don_t_have_account">Don\'t have account?</string>
+    <string name="txt_have_account">Already have account?</string>
+    <string name="txt_sign_up">Sign up</string>
+    <string name="msg_error_signin">Invalid login or password. Try again</string>
+    <string name="msg_error_signup">Invalid text. Try again</string>
+    <string name="name">Englishman in New York</string>
+    <string name="author">Sting</string>
+    <string name="main_text">I don\’t drink coffee I take tea my dear\n
+    I like my toast done on the side\n
+    And you can hear it in my accent when I talk\n
+    I\’m an Englishman in New York\n\n
+    See me walking down Fifth Avenue\n
+    A walking cane here at my side\n
+    I take it everywhere I walk\n
+    I\’m an Englishman in New York\n\n
+    I\’m an alien I\’m a legal alien\n
+    I\’m an Englishman in New York\n
+    I\’m an alien I\’m a legal alien\n
+    I\’m an Englishman in New York\n\n
+    If \‘manners maketh man\’ as someone said\n
+    Then he’s the hero of the day\n
+    It takes a man to suffer ignorance and smile\n
+    Be yourself no matter what they say
+    </string>
+    <string name="btn_changename">Change language</string>
+    <string name="set_txt_language">Language</string>
+    <string name="set_txt_login_settings">Login settings</string>
+    <string name="set_data_external">Save data in External</string>
+    <string-array name="lang">
+        <item>English</item>
+        <item>Russian</item>
+    </string-array>
+    <string name="cancel">Cancel</string>
+    <string name="change">Change</string>
+</resources>
