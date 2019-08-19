@@ -15,7 +15,7 @@ public class AppConfig {
 
     public static final String APP_PREFERENCES = "settings";
     public String APP_LANG ="lang";
-    public String APP_STORAGE ="storage";
+    public String APP_STORAGE = "storage";
     public SharedPreferences mSettings;
 
     AppConfig(Activity activity){
@@ -26,16 +26,12 @@ public class AppConfig {
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = mSettings.edit();
-        //получили базовые настройки языка пользователя и записали в настройки языка приложения
-        String lang = mSettings.getString(APP_LANG, "");
-        Toast.makeText(context,lang, Toast.LENGTH_SHORT).show();
-        if(lang.equals("")){
-            lang = context.getResources().getConfiguration().locale.getLanguage();
-            editor.putString(APP_LANG, lang);
-        }
-        editor.putString(APP_STORAGE,"internal");
-        editor.apply();
 
+        //получили базовые настройки языка пользователя и настройки хранения по умолчанию
+        String lang = getLang();
+        editor.putString(APP_LANG, lang);
+        editor.putBoolean(APP_STORAGE,getStorage());
+        editor.apply();
 
         Configuration config = context.getResources().getConfiguration();
         if (!config.locale.getLanguage().equals(lang)) {
@@ -44,7 +40,6 @@ public class AppConfig {
             config.locale = locale;
             context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
         }
-
 
     }
     //получаем базовые настройки приложения
@@ -55,7 +50,7 @@ public class AppConfig {
     }
     //получаем текущие настройки языка
     public String getLang(){
-        String value="";
+        String value=context.getResources().getConfiguration().locale.getLanguage();
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         if(mSettings.contains(APP_LANG)) {
             value = mSettings.getString(APP_LANG, "");
@@ -63,13 +58,19 @@ public class AppConfig {
         return value;
     }
     //получаем текущие настройки хранилища
-    public String getStorage(){
-        String value="";
+    public boolean getStorage(){
+        Boolean value=false;
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         if(mSettings.contains(APP_STORAGE)) {
-            value = mSettings.getString(APP_STORAGE, "");
+            value = mSettings.getBoolean(APP_STORAGE, false);
         }
         return value;
+    }
+    //устанавливаем хранилище в настройках
+    public void setStorage(Boolean value){
+        SharedPreferences.Editor editor = mSettings.edit();
+        editor.putBoolean(APP_STORAGE, value);
+        editor.apply();
     }
     //устанавливаем язык в настройках
     public void setLang(String value){

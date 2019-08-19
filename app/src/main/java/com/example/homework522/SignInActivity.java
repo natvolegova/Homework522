@@ -2,8 +2,10 @@ package com.example.homework522;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +21,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private LinearLayout layoutSignin;
     private LinearLayout layoutSignup;
     private FileHelper fh;
+    private AppConfig config;
+
     public static final String FILE_REG = "txt_reginfo.txt";
 
     @Override
@@ -42,7 +46,21 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         txtSignin.setOnClickListener(this);
         layoutSignin = findViewById(R.id.layout_signin);
         layoutSignup = findViewById(R.id.layout_signup);
-        fh = new FileHelper(SignInActivity.this, FILE_REG);
+
+        config = new AppConfig(SignInActivity.this);
+        Boolean curStorage = config.getStorage();
+        String fileDir="";
+        if(curStorage){
+            //внешнее хранилище
+            fileDir = getApplicationContext().getExternalFilesDir(null)+"/";
+        }else{
+            //внутреннее хранилище
+            fileDir = getFilesDir()+"/";
+        }
+        // полный путь к файлу
+        String actualFile = fileDir + FILE_REG;
+        Toast.makeText(SignInActivity.this,actualFile, Toast.LENGTH_SHORT).show();
+        fh = new FileHelper(SignInActivity.this, actualFile);
     }
 
     @Override
@@ -55,6 +73,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 EditText etPass = findViewById(R.id.et_pass);
                 String login = etLogin.getText().toString();
                 String pass = etPass.getText().toString();
+
                 if (!login.equals("") && !pass.equals("")) {
                     //получаем регистрационные данные из файла
                     String[] curvalue = fh.getValue().split(";");
