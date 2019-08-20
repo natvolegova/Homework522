@@ -35,6 +35,7 @@
     <string name="set_txt_language">Language</string>
     <string name="set_txt_login_settings">Login settings</string>
     <string name="set_data_external">Save data in External</string>
+    <string name="msg_request_denied">Request denied</string>
     <string-array name="lang">
         <item>English</item>
         <item>Russian</item>

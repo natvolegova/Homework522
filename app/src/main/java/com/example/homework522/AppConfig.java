@@ -14,13 +14,20 @@ public class AppConfig {
     private Context context;
 
     public static final String APP_PREFERENCES = "settings";
-    public String APP_LANG ="lang";
+
+    public String FILE_AUTH = "file_settings";
+    public String APP_LANG = "lang";
     public String APP_STORAGE = "storage";
+    public String IS_LOGINNED = "loginned";
+
+    public String FILE_NAME = "txt_reginfo.txt";
+
     public SharedPreferences mSettings;
 
     AppConfig(Activity activity){
         this.context = activity.getBaseContext();
     }
+
     public void createMainConfig(){
         //создали базовый файл с настройками
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
@@ -29,8 +36,10 @@ public class AppConfig {
 
         //получили базовые настройки языка пользователя и настройки хранения по умолчанию
         String lang = getLang();
+        editor.putString(FILE_AUTH, FILE_NAME);
         editor.putString(APP_LANG, lang);
-        editor.putBoolean(APP_STORAGE,getStorage());
+        editor.putBoolean(APP_STORAGE, getStorage());
+        editor.putBoolean(IS_LOGINNED, isLoginned());
         editor.apply();
 
         Configuration config = context.getResources().getConfiguration();
@@ -47,6 +56,16 @@ public class AppConfig {
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         String lang = mSettings.getString(APP_LANG, "");
       //  setLangRecreate(lang);
+    }
+
+    //получаем текущие настройки хранилища
+    public String getFileSetting() {
+        String value = "";
+        mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        if (mSettings.contains(FILE_AUTH)) {
+            value = mSettings.getString(FILE_AUTH, "");
+        }
+        return value;
     }
     //получаем текущие настройки языка
     public String getLang(){
@@ -66,10 +85,26 @@ public class AppConfig {
         }
         return value;
     }
+    //получаем текущие настройки хранилища
+    public boolean isLoginned() {
+        Boolean value = false;
+        mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        if (mSettings.contains(IS_LOGINNED)) {
+            value = mSettings.getBoolean(IS_LOGINNED, false);
+        }
+        return value;
+    }
+
     //устанавливаем хранилище в настройках
     public void setStorage(Boolean value){
         SharedPreferences.Editor editor = mSettings.edit();
         editor.putBoolean(APP_STORAGE, value);
+        editor.apply();
+    }
+    //устанавливаем статус зарегистрированного
+    public void setLoginned(Boolean value) {
+        SharedPreferences.Editor editor = mSettings.edit();
+        editor.putBoolean(IS_LOGINNED, value);
         editor.apply();
     }
     //устанавливаем язык в настройках

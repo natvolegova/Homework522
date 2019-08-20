@@ -35,6 +35,7 @@
     <string name="set_txt_language">Язык</string>
     <string name="set_txt_login_settings">Хранение данных</string>
     <string name="set_data_external">Хранить во внешнем хранилище</string>
+    <string name="msg_request_denied">Запрос отклонен</string>
     <string-array name="lang">
         <item>Английский</item>
         <item>Русский</item>
