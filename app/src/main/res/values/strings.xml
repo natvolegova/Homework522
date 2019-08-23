@@ -11,6 +11,7 @@
     <string name="txt_have_account">Already have account?</string>
     <string name="txt_sign_up">Sign up</string>
     <string name="msg_error_signin">Invalid login or password. Try again</string>
+    <string name="msg_error_noregister">Аccount not found. Please register</string>
     <string name="msg_error_signup">Invalid text. Try again</string>
     <string name="name">Englishman in New York</string>
     <string name="author">Sting</string>
@@ -36,10 +37,12 @@
     <string name="set_txt_login_settings">Login settings</string>
     <string name="set_data_external">Save data in External</string>
     <string name="msg_request_denied">Request denied</string>
+    <string name="msg_file_error">File Error</string>
     <string-array name="lang">
         <item>English</item>
         <item>Russian</item>
     </string-array>
     <string name="cancel">Cancel</string>
     <string name="change">Change</string>
+    <string name="logout">Log out</string>
 </resources>

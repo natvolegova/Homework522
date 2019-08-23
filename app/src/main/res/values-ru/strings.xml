@@ -11,6 +11,7 @@
     <string name="txt_have_account">Уже зарегистрированы?</string>
     <string name="txt_sign_up">Зарегистрироваться</string>
     <string name="msg_error_signin">Неверный логин или пароль. Попробуйте еще раз</string>
+    <string name="msg_error_noregister">Учетная запись не найдена, зарегистрируйтесь</string>
     <string name="msg_error_signup">Неверно введено значение. Попробуйте еще раз</string>
     <string name="name">Англичанин в Нью-Йорке</string>
     <string name="author">Sting</string>
@@ -36,10 +37,12 @@
     <string name="set_txt_login_settings">Хранение данных</string>
     <string name="set_data_external">Хранить во внешнем хранилище</string>
     <string name="msg_request_denied">Запрос отклонен</string>
+    <string name="msg_file_error">Ошибка получения файла</string>
     <string-array name="lang">
         <item>Английский</item>
         <item>Русский</item>
     </string-array>
     <string name="cancel">Отменить</string>
     <string name="change">Применить</string>
+    <string name="logout">Выход</string>
 </resources>

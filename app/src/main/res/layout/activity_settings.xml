@@ -56,5 +56,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/set_data_external" />
+        <View style="@style/divider" />
+        <TextView
+            android:id="@+id/txt_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/logout"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

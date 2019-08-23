@@ -6,12 +6,16 @@ import android.os.Environment;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class FileHelper {
     private Context context;
@@ -33,7 +37,7 @@ public class FileHelper {
             String actualFile = context.getApplicationContext().getExternalFilesDir(null) + "/" + fileName;
             createFile(actualFile);
         } else {
-            Toast.makeText(context, "File Error", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, context.getResources().getString(R.string.msg_file_error), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -52,14 +56,24 @@ public class FileHelper {
 
     //обновляем данные во внутреннем хранилище
     public void updateInternalValue(String fileName, String login, String pass) {
-        FileOutputStream outputStream;
+        FileOutputStream fos = null;
         String value = login + "\n" + pass;
         try {
-            outputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
-            outputStream.write(value.getBytes());
-            outputStream.close();
-        } catch (Exception e) {
+            fos = context.openFileOutput(fileName, MODE_PRIVATE);
+            OutputStreamWriter osw = new OutputStreamWriter(fos);
+            BufferedWriter bw = new BufferedWriter(osw);
+            bw.write(value);
+            bw.close();
+        } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException ignored) {
+                    ignored.printStackTrace();
+                }
+            }
         }
     }
 
@@ -67,12 +81,20 @@ public class FileHelper {
     public void updateExternalValue(String fileName, String login, String pass) {
         String actualFile = context.getApplicationContext().getExternalFilesDir(null) + "/" + fileName;
         String value = login + "\n" + pass;
+        FileWriter textFileWriter = null;
         try {
-            FileWriter textFileWriter = new FileWriter(actualFile, true);
+            textFileWriter = new FileWriter(actualFile, true);
             textFileWriter.write(value);
-            textFileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (textFileWriter != null) {
+                try {
+                    textFileWriter.close();
+                } catch (IOException ignored) {
+                    ignored.printStackTrace();
+                }
+            }
         }
     }
 
@@ -80,19 +102,18 @@ public class FileHelper {
     public String getInternalValue(String fileName) {
         FileInputStream fis = null;
         StringBuilder output = new StringBuilder();
+        String line = "";
         try {
             fis = context.openFileInput(fileName);
             InputStreamReader inputStreamReader = new InputStreamReader(fis);
             BufferedReader reader = new BufferedReader(inputStreamReader);
-            String line = "";
             // читаем содержимое по строкам
             while ((line = reader.readLine()) != null) {
                 output.append(line).append(";");
             }
-
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
+            return line;
         } finally {
             if (fis != null) {
                 try {
@@ -111,18 +132,18 @@ public class FileHelper {
         File fileReg = new File(actualFile);
         FileInputStream fis = null;
         StringBuilder output = new StringBuilder();
+        String line = "";
         try {
             fis = new FileInputStream(fileReg);
             InputStreamReader inputStreamReader = new InputStreamReader(fis);
             BufferedReader reader = new BufferedReader(inputStreamReader);
-            String line = "";
             // читаем содержимое по строкам
             while ((line = reader.readLine()) != null) {
                 output.append(line).append(";");
             }
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
+            return line;
         } finally {
             if (fis != null) {
                 try {
@@ -151,7 +172,7 @@ public class FileHelper {
             String actualFile = context.getApplicationContext().getExternalFilesDir(null) + "/" + fileName;
             new File(actualFile).delete();
         } else {
-            Toast.makeText(context, "File Error", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, context.getResources().getString(R.string.msg_file_error), Toast.LENGTH_LONG).show();
         }
     }
 

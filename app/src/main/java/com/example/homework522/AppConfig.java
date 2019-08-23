@@ -24,11 +24,11 @@ public class AppConfig {
 
     public SharedPreferences mSettings;
 
-    AppConfig(Activity activity){
+    AppConfig(Activity activity) {
         this.context = activity.getBaseContext();
     }
 
-    public void createMainConfig(){
+    public void createMainConfig() {
         //создали базовый файл с настройками
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
@@ -51,11 +51,12 @@ public class AppConfig {
         }
 
     }
+
     //получаем базовые настройки приложения
-    public void initBaseConfig(){
+    public void initBaseConfig() {
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         String lang = mSettings.getString(APP_LANG, "");
-      //  setLangRecreate(lang);
+        //  setLangRecreate(lang);
     }
 
     //получаем текущие настройки хранилища
@@ -67,24 +68,27 @@ public class AppConfig {
         }
         return value;
     }
+
     //получаем текущие настройки языка
-    public String getLang(){
-        String value=context.getResources().getConfiguration().locale.getLanguage();
+    public String getLang() {
+        String value = context.getResources().getConfiguration().locale.getLanguage();
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        if(mSettings.contains(APP_LANG)) {
+        if (mSettings.contains(APP_LANG)) {
             value = mSettings.getString(APP_LANG, "");
         }
         return value;
     }
+
     //получаем текущие настройки хранилища
-    public boolean getStorage(){
-        Boolean value=false;
+    public boolean getStorage() {
+        Boolean value = false;
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        if(mSettings.contains(APP_STORAGE)) {
+        if (mSettings.contains(APP_STORAGE)) {
             value = mSettings.getBoolean(APP_STORAGE, false);
         }
         return value;
     }
+
     //получаем текущие настройки хранилища
     public boolean isLoginned() {
         Boolean value = false;
@@ -96,30 +100,33 @@ public class AppConfig {
     }
 
     //устанавливаем хранилище в настройках
-    public void setStorage(Boolean value){
+    public void setStorage(Boolean value) {
         SharedPreferences.Editor editor = mSettings.edit();
         editor.putBoolean(APP_STORAGE, value);
         editor.apply();
     }
+
     //устанавливаем статус зарегистрированного
     public void setLoginned(Boolean value) {
         SharedPreferences.Editor editor = mSettings.edit();
         editor.putBoolean(IS_LOGINNED, value);
         editor.apply();
     }
+
     //устанавливаем язык в настройках
-    public void setLang(String value){
+    public void setLang(String value) {
         SharedPreferences.Editor editor = mSettings.edit();
         editor.putString(APP_LANG, value);
         editor.apply();
     }
+
     //устанавливаем язык
     public void setLangRecreate(String value) {
         Configuration config = context.getResources().getConfiguration();
         Locale locale = new Locale(value);
         Locale.setDefault(locale);
         config.locale = locale;
-        Toast.makeText(context,value, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(context,value, Toast.LENGTH_SHORT).show();
         context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
 
         Intent intent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
