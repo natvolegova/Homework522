@@ -14,21 +14,14 @@ public class AppConfig {
     private Context context;
 
     public static final String APP_PREFERENCES = "settings";
-
-    public String FILE_AUTH = "file_settings";
-    public String APP_LANG = "lang";
+    public String APP_LANG ="lang";
     public String APP_STORAGE = "storage";
-    public String IS_LOGINNED = "loginned";
-
-    public String FILE_NAME = "txt_reginfo.txt";
-
     public SharedPreferences mSettings;
 
-    AppConfig(Activity activity) {
+    AppConfig(Activity activity){
         this.context = activity.getBaseContext();
     }
-
-    public void createMainConfig() {
+    public void createMainConfig(){
         //создали базовый файл с настройками
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
@@ -36,10 +29,8 @@ public class AppConfig {
 
         //получили базовые настройки языка пользователя и настройки хранения по умолчанию
         String lang = getLang();
-        editor.putString(FILE_AUTH, FILE_NAME);
         editor.putString(APP_LANG, lang);
-        editor.putBoolean(APP_STORAGE, getStorage());
-        editor.putBoolean(IS_LOGINNED, isLoginned());
+        editor.putBoolean(APP_STORAGE,getStorage());
         editor.apply();
 
         Configuration config = context.getResources().getConfiguration();
@@ -51,82 +42,49 @@ public class AppConfig {
         }
 
     }
-
     //получаем базовые настройки приложения
-    public void initBaseConfig() {
+    public void initBaseConfig(){
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         String lang = mSettings.getString(APP_LANG, "");
-        //  setLangRecreate(lang);
+      //  setLangRecreate(lang);
     }
-
-    //получаем текущие настройки хранилища
-    public String getFileSetting() {
-        String value = "";
-        mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        if (mSettings.contains(FILE_AUTH)) {
-            value = mSettings.getString(FILE_AUTH, "");
-        }
-        return value;
-    }
-
     //получаем текущие настройки языка
-    public String getLang() {
-        String value = context.getResources().getConfiguration().locale.getLanguage();
+    public String getLang(){
+        String value=context.getResources().getConfiguration().locale.getLanguage();
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        if (mSettings.contains(APP_LANG)) {
+        if(mSettings.contains(APP_LANG)) {
             value = mSettings.getString(APP_LANG, "");
         }
         return value;
     }
-
     //получаем текущие настройки хранилища
-    public boolean getStorage() {
-        Boolean value = false;
+    public boolean getStorage(){
+        Boolean value=false;
         mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        if (mSettings.contains(APP_STORAGE)) {
+        if(mSettings.contains(APP_STORAGE)) {
             value = mSettings.getBoolean(APP_STORAGE, false);
         }
         return value;
     }
-
-    //получаем текущие настройки хранилища
-    public boolean isLoginned() {
-        Boolean value = false;
-        mSettings = context.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        if (mSettings.contains(IS_LOGINNED)) {
-            value = mSettings.getBoolean(IS_LOGINNED, false);
-        }
-        return value;
-    }
-
     //устанавливаем хранилище в настройках
-    public void setStorage(Boolean value) {
+    public void setStorage(Boolean value){
         SharedPreferences.Editor editor = mSettings.edit();
         editor.putBoolean(APP_STORAGE, value);
         editor.apply();
     }
-
-    //устанавливаем статус зарегистрированного
-    public void setLoginned(Boolean value) {
-        SharedPreferences.Editor editor = mSettings.edit();
-        editor.putBoolean(IS_LOGINNED, value);
-        editor.apply();
-    }
-
     //устанавливаем язык в настройках
-    public void setLang(String value) {
+    public void setLang(String value){
         SharedPreferences.Editor editor = mSettings.edit();
         editor.putString(APP_LANG, value);
         editor.apply();
     }
-
     //устанавливаем язык
     public void setLangRecreate(String value) {
         Configuration config = context.getResources().getConfiguration();
         Locale locale = new Locale(value);
         Locale.setDefault(locale);
         config.locale = locale;
-        // Toast.makeText(context,value, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context,value, Toast.LENGTH_SHORT).show();
         context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
 
         Intent intent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
